@@ -1018,10 +1018,10 @@ export namespace Prisma {
     id: string
     title: string
     author: string
-    description: string
-    isFavorite: boolean
-    isRead: boolean
-    isFinished: boolean
+    description: string | null
+    isFavorite: boolean | null
+    isRead: boolean | null
+    isFinished: boolean | null
     _count: BooksCountAggregateOutputType | null
     _min: BooksMinAggregateOutputType | null
     _max: BooksMaxAggregateOutputType | null
@@ -1090,10 +1090,10 @@ export namespace Prisma {
       id: string
       title: string
       author: string
-      description: string
-      isFavorite: boolean
-      isRead: boolean
-      isFinished: boolean
+      description: string | null
+      isFavorite: boolean | null
+      isRead: boolean | null
+      isFinished: boolean | null
     }, ExtArgs["result"]["books"]>
     composites: {}
   }
@@ -1933,6 +1933,14 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   /**
    * Field references
    */
@@ -1983,20 +1991,20 @@ export namespace Prisma {
     id?: UuidFilter<"Books"> | string
     title?: StringFilter<"Books"> | string
     author?: StringFilter<"Books"> | string
-    description?: StringFilter<"Books"> | string
-    isFavorite?: BoolFilter<"Books"> | boolean
-    isRead?: BoolFilter<"Books"> | boolean
-    isFinished?: BoolFilter<"Books"> | boolean
+    description?: StringNullableFilter<"Books"> | string | null
+    isFavorite?: BoolNullableFilter<"Books"> | boolean | null
+    isRead?: BoolNullableFilter<"Books"> | boolean | null
+    isFinished?: BoolNullableFilter<"Books"> | boolean | null
   }
 
   export type BooksOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
     author?: SortOrder
-    description?: SortOrder
-    isFavorite?: SortOrder
-    isRead?: SortOrder
-    isFinished?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isFavorite?: SortOrderInput | SortOrder
+    isRead?: SortOrderInput | SortOrder
+    isFinished?: SortOrderInput | SortOrder
   }
 
   export type BooksWhereUniqueInput = Prisma.AtLeast<{
@@ -2006,20 +2014,20 @@ export namespace Prisma {
     NOT?: BooksWhereInput | BooksWhereInput[]
     title?: StringFilter<"Books"> | string
     author?: StringFilter<"Books"> | string
-    description?: StringFilter<"Books"> | string
-    isFavorite?: BoolFilter<"Books"> | boolean
-    isRead?: BoolFilter<"Books"> | boolean
-    isFinished?: BoolFilter<"Books"> | boolean
+    description?: StringNullableFilter<"Books"> | string | null
+    isFavorite?: BoolNullableFilter<"Books"> | boolean | null
+    isRead?: BoolNullableFilter<"Books"> | boolean | null
+    isFinished?: BoolNullableFilter<"Books"> | boolean | null
   }, "id">
 
   export type BooksOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     author?: SortOrder
-    description?: SortOrder
-    isFavorite?: SortOrder
-    isRead?: SortOrder
-    isFinished?: SortOrder
+    description?: SortOrderInput | SortOrder
+    isFavorite?: SortOrderInput | SortOrder
+    isRead?: SortOrderInput | SortOrder
+    isFinished?: SortOrderInput | SortOrder
     _count?: BooksCountOrderByAggregateInput
     _max?: BooksMaxOrderByAggregateInput
     _min?: BooksMinOrderByAggregateInput
@@ -2032,80 +2040,80 @@ export namespace Prisma {
     id?: UuidWithAggregatesFilter<"Books"> | string
     title?: StringWithAggregatesFilter<"Books"> | string
     author?: StringWithAggregatesFilter<"Books"> | string
-    description?: StringWithAggregatesFilter<"Books"> | string
-    isFavorite?: BoolWithAggregatesFilter<"Books"> | boolean
-    isRead?: BoolWithAggregatesFilter<"Books"> | boolean
-    isFinished?: BoolWithAggregatesFilter<"Books"> | boolean
+    description?: StringNullableWithAggregatesFilter<"Books"> | string | null
+    isFavorite?: BoolNullableWithAggregatesFilter<"Books"> | boolean | null
+    isRead?: BoolNullableWithAggregatesFilter<"Books"> | boolean | null
+    isFinished?: BoolNullableWithAggregatesFilter<"Books"> | boolean | null
   }
 
   export type BooksCreateInput = {
     id?: string
     title: string
     author: string
-    description: string
-    isFavorite?: boolean
-    isRead?: boolean
-    isFinished?: boolean
+    description?: string | null
+    isFavorite?: boolean | null
+    isRead?: boolean | null
+    isFinished?: boolean | null
   }
 
   export type BooksUncheckedCreateInput = {
     id?: string
     title: string
     author: string
-    description: string
-    isFavorite?: boolean
-    isRead?: boolean
-    isFinished?: boolean
+    description?: string | null
+    isFavorite?: boolean | null
+    isRead?: boolean | null
+    isFinished?: boolean | null
   }
 
   export type BooksUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isFavorite?: BoolFieldUpdateOperationsInput | boolean
-    isRead?: BoolFieldUpdateOperationsInput | boolean
-    isFinished?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isFavorite?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRead?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isFinished?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type BooksUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isFavorite?: BoolFieldUpdateOperationsInput | boolean
-    isRead?: BoolFieldUpdateOperationsInput | boolean
-    isFinished?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isFavorite?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRead?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isFinished?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type BooksCreateManyInput = {
     id?: string
     title: string
     author: string
-    description: string
-    isFavorite?: boolean
-    isRead?: boolean
-    isFinished?: boolean
+    description?: string | null
+    isFavorite?: boolean | null
+    isRead?: boolean | null
+    isFinished?: boolean | null
   }
 
   export type BooksUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isFavorite?: BoolFieldUpdateOperationsInput | boolean
-    isRead?: BoolFieldUpdateOperationsInput | boolean
-    isFinished?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isFavorite?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRead?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isFinished?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type BooksUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     author?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    isFavorite?: BoolFieldUpdateOperationsInput | boolean
-    isRead?: BoolFieldUpdateOperationsInput | boolean
-    isFinished?: BoolFieldUpdateOperationsInput | boolean
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    isFavorite?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isRead?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    isFinished?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type UuidFilter<$PrismaModel = never> = {
@@ -2135,9 +2143,29 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type BooksCountOrderByAggregateInput = {
@@ -2203,20 +2231,42 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type NestedUuidFilter<$PrismaModel = never> = {
@@ -2244,9 +2294,23 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
   export type NestedUuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -2291,12 +2355,40 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
 

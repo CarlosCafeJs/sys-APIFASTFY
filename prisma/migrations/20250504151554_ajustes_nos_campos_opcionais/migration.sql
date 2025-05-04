@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Books" ALTER COLUMN "description" DROP NOT NULL,
+ALTER COLUMN "isFavorite" DROP NOT NULL,
+ALTER COLUMN "isRead" DROP NOT NULL,
+ALTER COLUMN "isFinished" DROP NOT NULL;
