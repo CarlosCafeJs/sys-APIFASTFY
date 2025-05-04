@@ -1,0 +1,9 @@
+{
+  "lastRun": "1746330442963-init-db.js",
+  "migrations": [
+    {
+      "title": "1746330442963-init-db.js",
+      "timestamp": 1746330454624
+    }
+  ]
+}
