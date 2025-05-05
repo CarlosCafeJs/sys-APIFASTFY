@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { prisma } from '../lib/prisma'
 
 export async function deleteBooks(app: FastifyInstance) {
-  app.delete('books/:bookId', async (request, reply) => {
+  app.delete('/books/:bookId', async (request, reply) => {
     const deleteBooksParams = z.object({
       bookId: z.string().uuid(),
     })
@@ -18,10 +18,11 @@ export async function deleteBooks(app: FastifyInstance) {
       return reply.status(404).send({ message: "Livro Não Encontrado" })
     }
 
-    await prisma.books.delete({
+    const deleteBook = await prisma.books.delete({
       where: {
         id: bookId,
       }
     })
+    return reply.status(200).send({ book: deleteBook });
   })
 }

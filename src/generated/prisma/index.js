@@ -165,7 +165,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://devuser:12345@localhost:5432/books?schema=public"
+        "value": "postgresql://postgres.jqxkmytuboxkxscvqfvo:Ck@rlos01570@aws-0-sa-east-1.pooler.supabase.com:5432/postgres"
       }
     }
   },

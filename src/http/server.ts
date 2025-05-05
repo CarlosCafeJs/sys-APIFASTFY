@@ -12,6 +12,10 @@ app.register(updateBooks)
 app.register(deleteBooks)
 
 
-app.listen({ port: 8080 }, () => {
-  console.log("O servidor esta rodando na porta 8080")
+app.listen({ port: 8080 }, (err, address) => {
+  if (err) {
+    console.error(err)
+    process.exit(1)
+  }
+  console.log(`🚀 Server is running at ${address}`)
 })
