@@ -1,15 +1,16 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "dist/http/server.js",
-      "use": "@vercel/node"
+  "functions": {
+    "src/http/**/*.ts": {
+      "runtime": "vercel-node@1.0.0"
     }
-  ],
+  },
+  "env": {
+    "NODE_ENV": "production"
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/http/server.ts"
+      "dest": "/src/http/server.ts"
     }
   ]
 }
